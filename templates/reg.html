@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/reg.css">
+    <title>注册</title>
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+             <h2 id="word">注册用户</h2>
+            <form class="form-horizontal">
+                {% csrf_token %}
+                 <div class="form-group ">
+                    <label for="avatar" class="col-sm-3 control-label">头像：</label>
+                    <div class="col-sm-8 avatar">
+                        <img src="/static/img/default.png" alt="" id="avatar_img">
+                        <input type="file" id="avatar_file">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-3 control-label">用户名：</label>
+                    <div class="col-sm-8">
+                        {{ form_obj.username }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">密码：</label>
+                    <div class="col-sm-8">
+                        {{ form_obj.password }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reg_pwd" class="col-sm-3 control-label">确认密码：</label>
+                    <div class="col-sm-8">
+                        {{ form_obj.reg_pwd }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">邮箱：</label>
+                    <div class="col-sm-8">
+                        {{ form_obj.email }}
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                    <div class="col-md-6 col-md-offset-5">
+                        <button type="submit" class="btn btn-info" id="regBtn">注册</button>&nbsp<span id="error"></span>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/jquery.cookie.js"></script>
+<script src="/static/js/reg.js"></script>
+
+
+</body>
+</html>
+
+
+

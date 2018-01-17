@@ -1,0 +1,12 @@
+ .navbar{
+            background-color: #5bc0de;
+            color:white;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .panel-heading{
+            text-align: center;
+        }
+       .user_info{
+         margin-left: 70px;
+        }

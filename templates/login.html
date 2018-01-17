@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <title>登录函数</title>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+             <h2 id="word">用户登录</h2>
+            <form class="form-horizontal">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username" class="col-sm-3 control-label">用户名：</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="username" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">密码：</label>
+                    <div class="col-sm-7">
+                        <input type="password" class="form-control" id="password" placeholder="密码">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="validCode" class="col-sm-3 control-label">验证码:</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="validCode" placeholder="验证码">
+                            </div>
+                            <div>
+                                <img src="/validCode_img/" width="200px" height="35px" id="validCode_img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                    <div class="col-md-3 col-md-offset-4">
+                        <button type="submit" class="btn btn-info" id="bbt">登录</button>&nbsp<span id="error"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <a href="/reg/"><button type="submit" value="提交" class="btn btn-default" id="reg">注册</button></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>
+
+
+

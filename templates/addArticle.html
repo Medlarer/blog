@@ -1,0 +1,37 @@
+{% extends "backendIndex.html" %}
+
+{% block Manage %}
+    {% csrf_token %}
+    <h2>添加文章</h2>
+    <hr>
+    <form action="/blog/backend/addArticle/" method="post" novalidate>
+    {% csrf_token %}
+    <div>
+        <label for="title">标题:</label>
+        <p>{{ article_forms.title }}</p>
+    </div>
+    <div>
+        <label for="content">内容:</label>
+        <p></p>
+        <p>{{ article_forms.content }}</p>
+    </div>
+    <p><input type="submit" value="提交"></p>
+    </form>
+
+    <script>
+    console.log("hello");
+    KindEditor.ready(function (K) {
+        window.editor=K.create('#id_content',{
+            width:"700px",
+            height:"500px",
+            resizeType:0,
+            uploadJson:"uploadFile",
+            extraFileUploadParams:{ KindEditor:KindEditor.ready(function(){}),
+                           csrfmiddlewaretoken:$("[name='csrfmiddlewaretoken']").val(),
+                       },
+        });
+    });
+    </script>
+
+
+{% endblock %}

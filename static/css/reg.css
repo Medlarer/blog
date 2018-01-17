@@ -1,0 +1,37 @@
+.container{
+    margin-top: 100px;
+}
+#word{
+    text-align: center;
+}
+.btn-info{
+    width: 50%;
+    vertical-align: middle;
+}
+/*.form-group{*/
+   /*margin-bottom: 40px;}*/
+
+#validCode_img{
+    /*color: yellow;*/
+    margin-bottom: 20px;
+}
+ .form-horizontal{
+            margin-top: 40px;
+        }
+
+.avatar{
+    position: relative;
+    width:60px;
+    height: 60px;
+}
+ #avatar_img,#avatar_file{
+     position: absolute;
+     top: 0;
+     left:125px;
+     width: 60px;
+     height: 60px;
+ }
+
+ #avatar_file{
+     opacity:0;
+ }

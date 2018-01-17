@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/homeSite.css">
+    <link rel="stylesheet" href="/static/css/article_detail.css">
+    <title>个人主页</title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">{{ current_user.username }}个人博客</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">随笔</a></li>
+                <li><a href="#">文章</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/blog/backend">后台管理</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 menu">
+            <div class="panel panel-info">
+                <div class="panel-heading">公告</div>
+                <div class="panel-body user_info">
+                     <p><img src="{{ current_user.avatar.url }}" alt="" width="80px" height="80px" id="avatar"></p>
+                   <p>昵称：{{ current_user.nickname }}</p>
+                </div>
+            </div>
+             <div class="panel panel-info">
+                <div class="panel-heading">文章分类</div>
+                    <div class="panel-body">
+                        {% for cate in cate_list %}
+                        <p><a href="/blog/{{ current_user.username }}/cate/{{cate.0}}">{{ cate.0 }}({{ cate.1 }})</a></p>
+                        {% endfor %}
+                    </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">标签分类</div>
+                 <div class="panel-body">
+                        {% for tag in tag_list %}
+                        <p><a href="/blog/{{ current_user.username }}/tag/{{ tag.0 }}">{{ tag.0 }}({{ tag.1 }})</a></p>
+                        {% endfor %}
+                    </div>
+            </div>
+             <div class="panel panel-info">
+                <div class="panel-heading">时间分类</div>
+                 <div class="panel-body">
+                    {% for date in date_list %}
+                    <p><a href="/blog/{{ current_user.username }}/date/{{ date.0 }}">{{ date.0 }}({{ date.1 }})</a></p>
+                    {% endfor %}
+                 </div>
+            </div>
+        </div>
+        <div class="col-md-8 content">
+        {% block content %}
+        {% for article in article_list %}
+            <a href="/blog/{{ article.user.username }}/articles/{{ article.nid }}"><h3>{{ article.title }}</h3></a>
+               <div class="article_desc">
+               {{ article.desc }}
+               </div>
+               <p></p>
+               <div class="article_footer">
+               发布时间:&nbsp{{ article.create_time|date:"Y-m-d s:i"  }}&nbsp&nbsp&nbsp
+                   <a href="">评论&nbsp<span class="glyphicon glyphicon-comment">({{ article.comment_count }})</span></a>&nbsp&nbsp&nbsp
+                    <a href="">点赞&nbsp<span class="glyphicon glyphicon-thumbs-up">({{ article.up_count }})</span></a>&nbsp&nbsp&nbsp
+                    <a href="">踩&nbsp<span class="glyphicon glyphicon-thumbs-down">({{ article.down_count }})</span></a>
+               </div>
+           {% endfor %}
+        {% endblock %}
+    </div>
+    </div>
+</div>
+</body>
+</html>

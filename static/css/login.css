@@ -1,0 +1,17 @@
+.container{
+    margin-top: 100px;
+}
+#word{
+    text-align: center;
+}
+.btn-info{
+    width: 50%;
+    vertical-align: middle;
+}
+/*.form-group{*/
+   /*margin-bottom: 40px;}*/
+
+#validCode_img{
+    /*color: yellow;*/
+    margin-bottom: 20px;
+}
